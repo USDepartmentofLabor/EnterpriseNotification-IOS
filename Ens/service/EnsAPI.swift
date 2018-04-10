@@ -34,7 +34,7 @@ enum APIError: Error {
 class EnsAPI: NSObject {
     
 //    fileprivate static let baseURLString = "http://tru-sim-dev-2.herokuapp.com"
-    fileprivate static let baseURLString = "http://localhost:5000"
+    fileprivate static let baseURLString = Bundle.main.infoDictionary!["EnsWebServiceUrl"] as! String
     
     
     fileprivate class func ensURL(method: Method, extra: [String]?) -> URL {

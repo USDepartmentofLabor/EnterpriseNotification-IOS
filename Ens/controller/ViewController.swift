@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print("VIEWCONTROLLER: viewDidLoad")
         updateDisplayDetailMsg()
-        loadEnsArchiveArray()
+//        loadEnsArchiveArray()
     }
 
     
@@ -51,9 +51,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func convertToString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        
+        let newDate: String = dateFormatter.string(from: date) // pass Date here
+        print(newDate) // New formatted Date string
+        
+        return newDate
+    }
+    
+    
     func displayEnsNoMas() {
         self.detailMsgTextView.text = "Cannot retrieve messages at this time"
-        self.updatedAt.text = Date()
+        
+        
+        self.updatedAt.text = convertToString(date: Date())
+    }
+    
+    func resetUserHistoryTableView() {
+        print("noop")
     }
     
     // MARK: Supporting methods
@@ -70,7 +88,7 @@ class ViewController: UIViewController {
                 self.detailMsgTextView.text = ensItem.description
                 self.updatedAt.text = ensItem.updatedAt
                 
-            case let .Failure(error):
+            case let .Failure(_):
                     let alert = UIAlertController(title: "Alert!", message: "Cannot retrieve messages at this time.", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                         self.resetUserHistoryTableView()

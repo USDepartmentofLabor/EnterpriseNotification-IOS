@@ -48,5 +48,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>EnsWebServiceUrl</key>
+	<string>http://localhost:5000</string>
 </dict>
 </plist>
